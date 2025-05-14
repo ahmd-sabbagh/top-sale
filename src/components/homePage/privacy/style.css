@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  [dir="rtl"] .cardP:not(:last-child) .text {
+    border-left: 1px solid #eeeeee;
+  }
+  [dir="ltr"] .cardP:not(:last-child) .text {
+    border-right: 1px solid #eeeeee;
+  }
+}
+@media (max-width: 767px) {
+  .cardP:not(:last-child){
+    border-bottom: 1px solid #eeeeee;
+  }
+}
