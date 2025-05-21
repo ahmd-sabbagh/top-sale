@@ -17,6 +17,7 @@ const Content = () => {
             filterStatus ? "lg:grid lg:gap-6 lg:grid-cols-4" : ""
           } `}
         >
+          {filterStatus && <Filter />}
           <div className=" md:col-span-3 h-fit">
             {adsData.length === 0 ? (
               <EmptyFilterAds />
@@ -34,7 +35,6 @@ const Content = () => {
               </div>
             )}
           </div>
-          {filterStatus && <Filter />}
         </div>
       </div>
     </section>

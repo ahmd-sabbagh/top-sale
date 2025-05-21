@@ -36,7 +36,6 @@ const AllDepartments = ({ name, sections }: Props) => {
   const ref = useClickOutside<HTMLDivElement>(() => {
     setOpenMenu(false);
   });
-  console.log(submenu, "status =>", isHovered);
   return (
     <button
       className="nav-section relative flex items-center gap-[6px] text-white cursor-pointer py-[11px] min-w-fit"
