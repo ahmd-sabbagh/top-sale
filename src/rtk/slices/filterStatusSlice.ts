@@ -5,7 +5,7 @@ interface ToggleState {
 }
 
 const initialState: ToggleState = {
-  value: true,
+  value: false,
 };
 
 const filterStatusSlice = createSlice({
