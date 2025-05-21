@@ -4,14 +4,6 @@ import AllDepartmentsSection from "./AllDepartmentsSection";
 import AllDepartments from "./AllDepartments";
 
 const Sections = () => {
-  //   name: string;
-  // sections: {
-  //   ad_type: string;
-  //   types: {
-  //     name: string;
-  //   }[];
-  // }[];
-
   const all_departments = {
     name: "كل الاقسام",
     sections: [
@@ -188,15 +180,15 @@ const Sections = () => {
     ],
   };
   const data = [
-    "إلكترونيات",
-    "موبايلات",
-    "كاميرات مراقبة",
-    "سماعات رقمية",
-    "كاميرات رقمية",
-    "أكسسوارات",
-    "شاشات كمبيوتر",
-    "إلكترونيات",
-    "سماعات",
+    "المركبات و قطع الغيار",
+    "العقارات و احتياجات السكن",
+    "الاحتياجات الشخصية",
+    "الوظائف",
+    "الرياضة و الصحة",
+    "السياحة و مستلزمات الرحلات",
+    "حيوانات",
+    "ارقام و لوحات",
+    "مصانع و منتجات اخري",
   ];
   const dataLinks = [
     "العقارات و احتياجات السكن",
