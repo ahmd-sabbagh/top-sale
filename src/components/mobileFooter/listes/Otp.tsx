@@ -1,10 +1,12 @@
 "use client";
 import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 let currentOTPIndex: number = 0;
 const Otp: FC = () => {
   const t = useTranslations();
+  const router = useRouter()
   const [otp, setOtp] = useState<string[]>(new Array(5).fill(""));
   const [error, setError] = useState(false);
 
@@ -60,6 +62,7 @@ const Otp: FC = () => {
   // submit
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    router.replace("/")
   };
   return (
     <>

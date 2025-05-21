@@ -9,7 +9,7 @@ import {
 interface Props {
   name: string;
   data:string[]
-}
+} 
 
 const AllDepartmentsSection = ({ name ,data }: Props) => {
   const [openMenu, setOpenMenu] = useState(false);

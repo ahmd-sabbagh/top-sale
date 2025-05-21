@@ -48,6 +48,12 @@ import image_plus from "./image-plus.svg";
 import chat_cam from "./take a picture.svg";
 import sent_msg from "./Combined Shape.svg";
 import red_heart from "./red-heart.svg";
+import delete_ad from "./delete.svg";
+import edit_ad from "./edit-ad.svg";
+import share_ad from "./share-ad.svg";
+import reload_ad from "./reload.svg";
+import add_ad from "./add-ads.svg";
+import login_bg from "./Login.png";
 
 // remove
 import discount_bg from "./remove/discount_banner.png";
@@ -104,6 +110,12 @@ import factories_3 from "./remove/Factories-3.png";
 import image_details from "./remove/image-details.jpg";
 
 export {
+  login_bg,
+  add_ad,
+  delete_ad,
+  edit_ad,
+  share_ad,
+  reload_ad,
   red_heart,
   sent_msg,
   chat_cam,

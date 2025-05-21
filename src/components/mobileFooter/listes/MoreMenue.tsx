@@ -22,7 +22,7 @@ type MoreMenuProps = {
 
 const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
   const t = useTranslations();
-  const token = "sd";
+  const token = "";
   return (
     <div>
       {/* Head */}
@@ -69,7 +69,7 @@ const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
       <div>
         {/* profile */}
         {token && (
-          <Link href={""} className="flex items-center gap-2 p-4">
+          <Link href={"/profile"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
             <div>
               <Image src={user_menu} alt="user-icon" loading="lazy" />
             </div>
@@ -88,21 +88,21 @@ const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
           <p className="title-color">{t("language")}</p>
         </button>
         {/* notification */}
-        <Link href={"/notification"} className="flex items-center gap-2 p-4">
+        <Link href={"/notification"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
           <div>
             <Image src={notification_menu} alt="user-icon" loading="lazy" />
           </div>
           <p className="title-color">{t("notification")}</p>
         </Link>
         {/* who we are */}
-        <Link href={"/about-us"} className="flex items-center gap-2 p-4">
+        <Link href={"/about-us"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
           <div>
             <Image src={star} alt="user-icon" loading="lazy" />
           </div>
           <p className="title-color">{t("who_we_are")}</p>
         </Link>
         {/* privacy policy */}
-        <Link href={"/privacy-policy"} className="flex items-center gap-2 p-4">
+        <Link href={"/privacy-policy"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
           <div>
             <Image src={note} alt="user-icon" loading="lazy" />
           </div>

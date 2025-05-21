@@ -14,7 +14,7 @@ const NotificationChangeForm = () => {
   };
   return (
     <form className="flex flex-col gap-4">
-      <div className="py-4 border-b border-color">
+      <div className="py-4 border-b border-color pe-4">
         <CheckBox
           lang={toggleBooleanString(noti)}
           title={t("activation")}
@@ -22,7 +22,7 @@ const NotificationChangeForm = () => {
           onChange={onChange}
         />
       </div>
-      <div className="py-4 border-b border-color">
+      <div className="py-4 border-b border-color pe-4">
         <CheckBox
           lang={toggleBooleanString(noti)}
           title={t("stoped")}

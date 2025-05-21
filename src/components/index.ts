@@ -27,6 +27,7 @@ import SelectButton from "./selectButton/SelectButton";
 import Modal from "./modal/Modal";
 import SearchInput from "./searchInput/SearchInput";
 import SelectSection from "./selectSection/SelectSection";
+import AddAdsBtn from "./adAdsBtn/AddAdsBtn";
 export {
   Navbar,
   Footer,
@@ -56,5 +57,6 @@ export {
   SelectButton,
   Modal,
   SearchInput,
-  SelectSection
+  SelectSection,
+  AddAdsBtn
 };

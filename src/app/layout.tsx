@@ -3,7 +3,13 @@ import "./globals.css";
 import { getLocale, getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
-import { Footer, Navbar, MobileFooter, Subscription } from "@/components";
+import {
+  Footer,
+  Navbar,
+  MobileFooter,
+  Subscription,
+  AddAdsBtn,
+} from "@/components";
 import MainProvider from "@/rtk/MainProvider";
 
 const din_next = localFont({
@@ -38,14 +44,7 @@ export default async function RootLayout({
       <NextIntlClientProvider messages={messages}>
         <body className={`${din_next.className} antialiased relative`}>
           <Navbar />
-          <MainProvider lang={locale}>
-            <main className="min-h-[403px] main_main mb-[123px] md:mb-0">
-              {children}
-              <Subscription />
-            </main>
-          </MainProvider>
-          <Footer />
-          <MobileFooter lang={locale} />
+          <MainProvider lang={locale}>{children}</MainProvider>
         </body>
       </NextIntlClientProvider>
     </html>

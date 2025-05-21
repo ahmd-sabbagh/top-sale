@@ -12,7 +12,7 @@ const MyAdsPage = () => {
           className={`flex flex-col gap-6`}
         >
           {adsDataFav.map((ads, idx) => (
-            <AdsCard {...ads} status={true} key={idx} />
+            <AdsCard {...ads} status={true} owner={true} key={idx} />
           ))}
         </div>
       )}

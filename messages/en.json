@@ -89,7 +89,7 @@
   "phone": "Phone Number",
   "save": "Save",
   "delete account": "Delete Account",
-  "password": "Password",
+  "password": "Current Password",
   "edit password": "Change Password",
   "current password": "Current Password",
   "new password": "New Password",
@@ -117,5 +117,8 @@
   "find city": "Find City...",
   "Select what is required": "Select What is Required",
   "messages": "Messages",
-  "write message": "Write Your Message"
+  "write message": "Write Your Message",
+  "Link copied to clipboard": "Link copied to clipboard",
+  "view less":"view less",
+  "To advertise":"To advertise"
 }

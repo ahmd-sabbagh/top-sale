@@ -5,23 +5,23 @@ import React from "react";
 const Links = () => {
   const links = [
     {
-      href: "",
+      href: "/all-ads",
       name: "إلكترونيات",
     },
     {
-      href: "",
+      href: "/all-ads",
       name: "موبايلات",
     },
     {
-      href: "",
+      href: "/all-ads",
       name: "آيفون",
     },
     {
-      href: "",
+      href: "/all-ads",
       name: "تخفيضات",
     },
     {
-      href: "",
+      href: "/all-ads",
       name: "إلكترونيات",
     },
   ];

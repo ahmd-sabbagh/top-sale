@@ -29,7 +29,7 @@ const Content = () => {
                 }`}
               >
                 {adsData.map((ads, idx) => (
-                  <AdsCard {...ads} key={idx} />
+                  <AdsCard status={sort} {...ads} key={idx} />
                 ))}
               </div>
             )}

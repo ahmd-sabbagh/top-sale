@@ -3,6 +3,7 @@ import { OwnerAds } from "@/utils/dtos";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import Follow from "./Follow";
 
 interface Props {
   data?: OwnerAds;
@@ -35,12 +36,7 @@ const Owner = ({ data }: Props) => {
               </div>
             </Link>
             {/* Follow */}
-            <button
-              type="button"
-              className="flex-c w-[108px] h-[42px] rounded border border-main-color text-main text-sm"
-            >
-              {t("follow")}
-            </button>
+            <Follow />
           </div>
           {/* Social */}
           <div className="flex items-center gap-6 mt-5 md:mt-6">
@@ -59,7 +55,7 @@ const Owner = ({ data }: Props) => {
             )}
 
             <Link
-              href={``}
+              href={`/messages`}
               className="flex items-center gap-2 justify-center rounded grow py-3 md:py-4 bg-main"
             >
               <span>

@@ -29,7 +29,7 @@ const MyAdsPage = () => {
           ) : (
             <div className={`flex flex-col gap-6`}>
               {adsDataFav.map((ads, idx) => (
-                <AdsCard {...ads} status={true} key={idx} />
+                <AdsCard {...ads} status={true} owner key={idx} />
               ))}
             </div>
           )}

@@ -13,7 +13,7 @@ const FavoriteButton = ({ fav }: Props) => {
   return (
     <button
       type="button"
-      className={`absolute top-[14px] end-[14px] w-[35px] h-[35px] rounded-full flex-c ${
+      className={`absolute top-[14px] end-[14px] w-[35px] h-[35px] rounded-full flex-c z-[1] ${
         status ? "bg-red" : "bg-[#F8F8F8] border border-color"
       }`}
       onClick={() => setStatus(!status)}

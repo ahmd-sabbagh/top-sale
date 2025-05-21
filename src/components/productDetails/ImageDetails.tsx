@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import FavoriteButton from "../adsCard/FavoriteButton";
 
 const ImageDetails = () => {
   const [image, setImage] = useState({ id: "1", image: image_details });
@@ -100,11 +101,12 @@ const ImageDetails = () => {
         </div>
         {/* main image */}
         <div className="main-image img-fit relative min-h-[397px] md:h-[651px] rounded border border-color overflow-hidden flex-1 w-full">
+          <FavoriteButton fav={false} />
           <Image
             src={image.image}
             alt="product"
             fill
-            className="object-cover"
+            className="object-cover z-0"
             sizes="(min-width: 768px) 651px, 397px"
           />
           <button

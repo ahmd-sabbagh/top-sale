@@ -3,11 +3,11 @@ import Link from "next/link";
 import React from "react";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
-interface Props{
-  setState:(value:boolean) => void
+interface Props {
+  setState: (value: boolean) => void;
 }
 
-const MenuLinks = ({setState}:Props) => {
+const MenuLinks = ({ setState }: Props) => {
   const t = useTranslations();
   const links = [
     {
@@ -31,6 +31,7 @@ const MenuLinks = ({setState}:Props) => {
       href: "/profile/notification",
     },
   ];
+  const token = "";
   return (
     <div className="flex flex-col gap-2">
       {links.map((link, idx) => (
@@ -46,9 +47,19 @@ const MenuLinks = ({setState}:Props) => {
           </span>
         </Link>
       ))}
-      <button className="block w-full px-4 py-[10px] text-[#CA4146] text-start">
-        {t("logout")}
-      </button>
+      {token ? (
+        <button className="block w-full px-4 py-[10px] text-[#CA4146] text-start">
+          {t("logout")}
+        </button>
+      ) : (
+        <Link
+          href={"/login"}
+          className="block w-full px-4 py-[10px] text-[#CA4146] text-start"
+          onClick={() => setState(false)}
+        >
+          {t("login")}
+        </Link>
+      )}
     </div>
   );
 };

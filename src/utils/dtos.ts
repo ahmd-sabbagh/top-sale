@@ -7,7 +7,8 @@ export interface AdsCardType {
   price: string;
   oldPrice?: string;
   fav: boolean;
-  status?:boolean
+  status?:boolean;
+  owner?:boolean
 }
 export interface HeadCompnent {
   title: string;

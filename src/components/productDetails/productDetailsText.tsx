@@ -1,4 +1,4 @@
-import { star_rate } from "@/assets";
+
 import { ProductDetailsTextType } from "@/utils/dtos";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -9,6 +9,7 @@ import Rating from "./actions/Rating";
 import Links from "./actions/Links";
 import Owner from "./actions/Owner";
 import ThisOwner from "./actions/ThisOwner";
+import DescriptionSection from "./DescriptionSection ";
 
 interface Props {
   data: ProductDetailsTextType;
@@ -31,11 +32,7 @@ const ProductDetailsText = ({ data }: Props) => {
         <ShareAds />
       </div>
       {/* description */}
-      <p className="desc-color mt-4">{data.description}</p>
-      {/* View More */}
-      <button type="button" className="block w-fit mt-2 text-main">
-        {t("view more")}
-      </button>
+      <DescriptionSection description={data.description} />
       {/* Links */}
       <Links />
       {/* Owner */}
