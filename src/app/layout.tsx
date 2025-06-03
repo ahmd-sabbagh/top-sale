@@ -41,6 +41,13 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
+
+        {/* iOS splash screen setup */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="Top Seal" />
+        {/* أيقونة التطبيق لـ iOS */}
+        <link rel="apple-touch-icon" href="/icons/512.png" />
       </head>
       <body className={`${din_next.className} antialiased relative`}>
         <NextIntlClientProvider messages={messages}>
