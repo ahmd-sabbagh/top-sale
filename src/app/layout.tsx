@@ -25,10 +25,6 @@ export const metadata: Metadata = {
   title: "Top Seal",
   description:
     "A classified ads platform that allows you to easily and securely buy and sell everything you need, from cars and real estate to electronics and various products, with the ability for direct communication between the buyer and seller.",
-  manifest: "/manifest.json",
-};
-export const viewport = {
-  themeColor: "#000000",
 };
 
 export default async function RootLayout({
@@ -38,14 +34,20 @@ export default async function RootLayout({
 }>) {
   const locale = await getLocale();
   const messages = await getMessages();
+
   return (
-    <html lang={locale} dir={locale == "ar" ? "rtl" : "ltr"}>
-      <NextIntlClientProvider messages={messages}>
-        <body className={`${din_next.className} antialiased relative`}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+      </head>
+      <body className={`${din_next.className} antialiased relative`}>
+        <NextIntlClientProvider messages={messages}>
           <Navbar />
           <MainProvider lang={locale}>{children}</MainProvider>
-        </body>
-      </NextIntlClientProvider>
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
