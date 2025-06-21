@@ -21,6 +21,7 @@ const Cont = ({ children }: Props) => {
             fill
             className="object-contain"
             sizes="200px"
+            priority
           />
         </div>
         <h4 className=" p-4 text-xl text-center title-color">{t("Login")}</h4>

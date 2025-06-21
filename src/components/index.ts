@@ -28,6 +28,8 @@ import Modal from "./modal/Modal";
 import SearchInput from "./searchInput/SearchInput";
 import SelectSection from "./selectSection/SelectSection";
 import AddAdsBtn from "./adAdsBtn/AddAdsBtn";
+import SnipperButton from "./sniperBtn/SniperBtn";
+import Otp from "./otp/Otp";
 export {
   Navbar,
   Footer,
@@ -58,5 +60,7 @@ export {
   Modal,
   SearchInput,
   SelectSection,
-  AddAdsBtn
+  AddAdsBtn,
+  SnipperButton,
+  Otp,
 };

@@ -1,6 +1,7 @@
+import Otp from "@/components/otp/Otp";
 import { useTranslations } from "next-intl";
+import { useRouter, useSearchParams } from "next/navigation";
 import { IoClose } from "react-icons/io5";
-import Otp from "./Otp";
 
 type Props = {
   handleOpenList: (
@@ -10,6 +11,10 @@ type Props = {
 
 const Verify = ({ handleOpenList }: Props) => {
   const t = useTranslations();
+  const searchParams = useSearchParams();
+  const phone = searchParams.get("phone") || "";
+  const router = useRouter();
+
   return (
     <div>
       {/* Head */}
@@ -27,9 +32,14 @@ const Verify = ({ handleOpenList }: Props) => {
       <div className="p-4">
         <div className="title-color text-sm flex flex-col gap-1">
           <p>{t("verify desc")}</p>
-          <p>{"01094201538"}</p>
+          <p>{phone}</p>
         </div>
-        <Otp />
+        <Otp
+          phone={phone}
+          onSuccess={() => {
+            handleOpenList("verify");
+          }}
+        />
       </div>
     </div>
   );

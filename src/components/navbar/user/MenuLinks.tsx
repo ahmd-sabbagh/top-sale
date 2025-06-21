@@ -1,5 +1,8 @@
+import { useAuth } from "@/app/context/AuthContext";
+import { deleteCookie } from "cookies-next/client";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
@@ -9,6 +12,10 @@ interface Props {
 
 const MenuLinks = ({ setState }: Props) => {
   const t = useTranslations();
+  const router = useRouter()
+  const { token } = useAuth();
+  const { setToken } = useAuth();
+
   const links = [
     {
       name: t("my_profile"),
@@ -31,7 +38,6 @@ const MenuLinks = ({ setState }: Props) => {
       href: "/profile/notification",
     },
   ];
-  const token = "";
   return (
     <div className="flex flex-col gap-2">
       {links.map((link, idx) => (
@@ -48,7 +54,15 @@ const MenuLinks = ({ setState }: Props) => {
         </Link>
       ))}
       {token ? (
-        <button className="block w-full px-4 py-[10px] text-[#CA4146] text-start">
+        <button
+          className="block w-full px-4 py-[10px] text-[#CA4146] text-start"
+          onClick={() => {
+            deleteCookie("token");
+            router.refresh();
+            setToken(null)
+            setState(false)
+          }}
+        >
           {t("logout")}
         </button>
       ) : (

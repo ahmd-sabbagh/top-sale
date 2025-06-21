@@ -120,5 +120,8 @@
   "write message": "اكتب رسالتك",
   "Link copied to clipboard": "تم نسخ الرابط إلى الحافظة",
   "view less":"عرض أقل",
-  "To advertise":"للاعلان"
+  "To advertise":"للاعلان",
+  "validation_phone":"الرقم غير صحيح",
+  "Something went wrong": "حدث خطأ ما",
+  "phone_sent_success": "تم إرسال الرقم بنجاح"
 }

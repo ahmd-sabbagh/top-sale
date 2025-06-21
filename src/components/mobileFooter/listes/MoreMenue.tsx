@@ -1,5 +1,5 @@
 "use client";
-
+import { useAuth } from "@/app/context/AuthContext";
 import {
   language_menu,
   logout,
@@ -10,9 +10,11 @@ import {
   user_color,
   user_menu,
 } from "@/assets";
+import { deleteCookie } from "cookies-next/client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { IoIosArrowUp } from "react-icons/io";
 type MoreMenuProps = {
   handleOpenList: (
@@ -22,7 +24,9 @@ type MoreMenuProps = {
 
 const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
   const t = useTranslations();
-  const token = "";
+  const { token } = useAuth();
+  const { setToken } = useAuth();
+  const router = useRouter()
   return (
     <div>
       {/* Head */}
@@ -31,7 +35,7 @@ const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
           {token ? (
             <div className="w-10 h-10 rounded-full overflow-hidden relative">
               <Image
-                src={profile}
+                src={user_color}
                 alt="profile-image"
                 loading="lazy"
                 fill
@@ -53,7 +57,7 @@ const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
           <div className="text-sm">
             <p className="text-gray">{t("welcom")}</p>
             <p className="title-color">
-              {token ? "Ahmed Mohamed" : t("visitor")}
+              {token ? t("my_profile") : t("visitor")}
             </p>
           </div>
         </div>
@@ -69,7 +73,11 @@ const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
       <div>
         {/* profile */}
         {token && (
-          <Link href={"/profile"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
+          <Link
+            href={"/profile"}
+            className="flex items-center gap-2 p-4"
+            onClick={() => handleOpenList("userMenu")}
+          >
             <div>
               <Image src={user_menu} alt="user-icon" loading="lazy" />
             </div>
@@ -88,21 +96,33 @@ const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
           <p className="title-color">{t("language")}</p>
         </button>
         {/* notification */}
-        <Link href={"/notification"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
+        <Link
+          href={"/notification"}
+          className="flex items-center gap-2 p-4"
+          onClick={() => handleOpenList("userMenu")}
+        >
           <div>
             <Image src={notification_menu} alt="user-icon" loading="lazy" />
           </div>
           <p className="title-color">{t("notification")}</p>
         </Link>
         {/* who we are */}
-        <Link href={"/about-us"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
+        <Link
+          href={"/about-us"}
+          className="flex items-center gap-2 p-4"
+          onClick={() => handleOpenList("userMenu")}
+        >
           <div>
             <Image src={star} alt="user-icon" loading="lazy" />
           </div>
           <p className="title-color">{t("who_we_are")}</p>
         </Link>
         {/* privacy policy */}
-        <Link href={"/privacy-policy"} className="flex items-center gap-2 p-4" onClick={() => handleOpenList("userMenu")}>
+        <Link
+          href={"/privacy-policy"}
+          className="flex items-center gap-2 p-4"
+          onClick={() => handleOpenList("userMenu")}
+        >
           <div>
             <Image src={note} alt="user-icon" loading="lazy" />
           </div>
@@ -110,9 +130,24 @@ const MoreMenue = ({ handleOpenList }: MoreMenuProps) => {
         </Link>
         {/* logout */}
         {token && (
-          <button className="w-full flex items-center gap-2 p-4">
-            <div>
-              <Image src={logout} alt="user-icon" loading="lazy" />
+          <button
+            className="w-full flex items-center gap-2 p-4"
+            onClick={() => {
+              deleteCookie("token");
+              router.refresh();
+              setToken(null);
+              handleOpenList("userMenu")
+            }}
+          >
+            <div className="w-4 h-4 relative">
+              <Image
+                src={logout}
+                alt="user-icon"
+                fill
+                loading="lazy"
+                className="object-contain"
+                sizes="16px"
+              />
             </div>
             <p className="text-[#F55157]">{t("logout")}</p>
           </button>

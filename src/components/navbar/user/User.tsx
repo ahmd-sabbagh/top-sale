@@ -7,10 +7,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import Menu from "../../menu/Menu";
 import MenuLinks from "./MenuLinks";
+import { useAuth } from "@/app/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 const User = () => {
   const t = useTranslations();
   const [open, setOpen] = useState(false);
+  const { token } = useAuth();
+  const router = useRouter()
 
   // ref
   const userButtonRef = useRef<HTMLButtonElement>(null);
@@ -31,6 +35,14 @@ const User = () => {
       document.removeEventListener("mousedown", menuUserHandler);
     };
   }, []);
+  // open Menu
+  const openMenuHandler = () => {
+    if (token) {
+      setOpen(!open);
+    }else{
+      router.replace('/login')
+    }
+  };
   return (
     <div className="hidden md:flex items-center gap-2 relative">
       <div className="flex-c w-10 h-10 rounded-full bg-[#ABABAB21]">
@@ -42,10 +54,12 @@ const User = () => {
           type="button"
           className="flex items-end gap-1"
           ref={userButtonRef}
-          onClick={() => setOpen(!open)}
+          onClick={openMenuHandler}
         >
-          <p className="title-color text-sm lg:text-base">{t("login")}</p>
-          <div className={`transition ${open ? "rotate-180" :""}`}>
+          <p className="title-color text-sm lg:text-base">
+            {token ? t("my_profile") : t("login")}
+          </p>
+          <div className={`transition ${open ? "rotate-180" : ""}`}>
             <IoIosArrowUp />
           </div>
         </button>

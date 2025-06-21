@@ -1,15 +1,11 @@
-"use client";
 import React from "react";
 import Cont from "../Cont";
-import Form from "../login/Form";
-import Otp from "@/components/mobileFooter/listes/Otp";
-import useRedirectOnMobile from "@/hooks/useRedirectOnMobile";
+import PageClone from "./PageClone";
 
 const VerifyPage = () => {
-  useRedirectOnMobile("/");
   return (
     <Cont>
-      <Otp />
+      <PageClone />
     </Cont>
   );
 };

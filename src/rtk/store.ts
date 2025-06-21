@@ -5,6 +5,8 @@ import toggleReducer from "./slices/sortSlice";
 import filterStatusReducer from "./slices/filterStatusSlice";
 import openChatSlice from "./slices/openChatSlice";
 import favoriteListSlice from "./slices/favoriteListSlice";
+import phoneReducer from "./features/phoneSlice";
+import otpReducer from "./features/otpSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +15,9 @@ export const store = configureStore({
     sellerAdsListSlice: sellerAdsListSlice,
     sort: toggleReducer,
     filterStatus: filterStatusReducer,
-    favoriteListSlice:favoriteListSlice
+    favoriteListSlice:favoriteListSlice,
+    phone: phoneReducer,
+    otp: otpReducer,
   },
 });
 
