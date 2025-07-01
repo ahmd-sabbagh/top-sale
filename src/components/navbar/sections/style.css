@@ -1,0 +1,35 @@
+.menuCont {
+  top: 100%;
+}
+.nav-section:hover .arrow {
+  transform: rotate(180deg);
+}
+.section-menu,.submenu {
+  background-color: white;
+  box-shadow: 0 0 20px #0000001a;
+}
+.nav-section:hover .section-menu {
+  display: block;
+}
+[dir="ltr"] .section-menu {
+  left: 0;
+  border-radius: 0 16px 16px 16px;
+}
+[dir="ltr"] .section-menu.de {
+  left: 0;
+  border-radius: 0 0px 0px 16px !important;
+}
+[dir="rtl"] .section-menu {
+  right: 0;
+  border-radius: 16px 0 16px 16px;
+}
+[dir="rtl"] .section-menu.de {
+  right: 0;
+  border-radius: 0px 0 16px 0px !important;
+}
+[dir="ltr"] .submenu {
+  border-radius: 0 16px 16px 0px;
+}
+[dir="rtl"] .submenu {
+  border-radius: 16px 0 0px 16px;
+}

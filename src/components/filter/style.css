@@ -1,0 +1,26 @@
+.custom-slider .rc-slider-rail {
+  background-color: #EEEEEE; /* خلفية الشريط */
+  height: 3px;
+}
+
+.custom-slider .rc-slider-track {
+  background-color: var(--main-color); /* لون الجزء المحدد */
+  height: 3px;
+}
+
+.custom-slider .rc-slider-handle {
+  border: solid 2px white ;
+  background-color: var(--main-color);
+  width: 18px;
+  height:18px;
+  margin-top: -7px;
+  opacity: 1;
+}
+
+.custom-slider .rc-slider-handle:hover {
+  border-color: var(--main-color);
+}
+.custom-slider .rc-slider-handle-dragging {
+    border: 2px solid var(--main-color) !important;
+    box-shadow: none !important;
+  }
