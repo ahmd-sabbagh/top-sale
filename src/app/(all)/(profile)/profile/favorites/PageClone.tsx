@@ -28,7 +28,7 @@ const PageClone = () => {
         }}
       />
       <div className=" mt-8">
-        {adsDataFav.length === 0 ? (
+        {adsDataFav.length !== 0 ? (
           <EmptyFilterAds />
         ) : (
           <div
@@ -36,9 +36,9 @@ const PageClone = () => {
               isGrid ? "flex flex-col" : "grid"
             } gap-4 lg:gap-6 grid-cols-2 md:grid-cols-3`}
           >
-            {adsDataFav.map((ads, idx) => (
+            {/* {adsDataFav.map((ads, idx) => (
               <AdsCard {...ads} status={isGrid} key={idx} />
-            ))}
+            ))} */}
           </div>
         )}
       </div>

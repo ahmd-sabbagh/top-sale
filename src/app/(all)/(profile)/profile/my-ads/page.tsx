@@ -5,15 +5,15 @@ import React from "react";
 const MyAdsPage = () => {
   return (
     <div className="hidden md:block">
-      {adsDataFav.length === 0 ? (
+      {adsDataFav.length !== 0 ? (
         <EmptyFilterAds />
       ) : (
         <div
           className={`flex flex-col gap-6`}
         >
-          {adsDataFav.map((ads, idx) => (
+          {/* {adsDataFav.map((ads, idx) => (
             <AdsCard {...ads} status={true} owner={true} key={idx} />
-          ))}
+          ))} */}
         </div>
       )}
     </div>

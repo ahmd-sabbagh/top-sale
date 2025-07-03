@@ -24,13 +24,13 @@ const MyAdsPage = () => {
       <section className="md:hidden">
         <SubLinks links={sublinks} />
         <div className="container">
-          {adsDataFav.length === 0 ? (
+          {adsDataFav.length !== 0 ? (
             <EmptyFilterAds />
           ) : (
             <div className={`flex flex-col gap-6`}>
-              {adsDataFav.map((ads, idx) => (
+              {/* {adsDataFav.map((ads, idx) => (
                 <AdsCard {...ads} status={true} owner key={idx} />
-              ))}
+              ))} */}
             </div>
           )}
         </div>

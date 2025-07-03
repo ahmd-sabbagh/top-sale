@@ -36,7 +36,7 @@ const FavoritesContent = () => {
             filter: filter_icon,
           }}
         />
-        {adsDataFav.length === 0 ? (
+        {adsDataFav.length !== 0 ? (
           <EmptyFilterAds />
         ) : (
           <div
@@ -46,9 +46,9 @@ const FavoritesContent = () => {
               isFilter ? "lg:grid-cols-3" : "lg:grid-cols-4"
             )}
           >
-            {adsDataFav.map((ads, idx) => (
+            {/* {adsDataFav.map((ads, idx) => (
               <AdsCard status={isGrid} {...ads} key={idx} />
-            ))}
+            ))} */}
           </div>
         )}
       </div>

@@ -40,7 +40,7 @@ const MenuLinks = ({ setState }: Props) => {
   ];
   return (
     <div className="flex flex-col gap-2">
-      {links.map((link, idx) => (
+      {/* {links.map((link, idx) => (
         <Link
           href={link.href}
           className="flex item-center justify-between p-4 border-b border-color ltr:hover:translate-x-1 rtl:hover:-translate-x-1 transition"
@@ -52,7 +52,7 @@ const MenuLinks = ({ setState }: Props) => {
             <MdOutlineKeyboardArrowLeft />
           </span>
         </Link>
-      ))}
+      ))} */}
       {token ? (
         <button
           className="block w-full px-4 py-[10px] text-[#CA4146] text-start"
