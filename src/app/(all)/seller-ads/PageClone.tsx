@@ -70,7 +70,7 @@ const PageClone = () => {
                 }}
               />
 
-              {adsData.length === 0 ? (
+              {adsData.length !== 0 ? (
                 <EmptyFilterAds />
               ) : (
                 <div
@@ -80,9 +80,9 @@ const PageClone = () => {
                     isFilter ? "lg:grid-cols-3" : "lg:grid-cols-4"
                   )}
                 >
-                  {adsData.map((ads, idx) => (
+                  {/* {adsData.map((ads, idx) => (
                     <AdsCard status={isGrid} {...ads} key={idx} />
-                  ))}
+                  ))} */}
                 </div>
               )}
             </div>
