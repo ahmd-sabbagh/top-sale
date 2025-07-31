@@ -124,5 +124,6 @@
   "validation_phone":"الرقم غير صحيح",
   "Something went wrong": "حدث خطأ ما",
   "phone_sent_success": "تم إرسال الرقم بنجاح",
-  "all_departments":"كل الاقسام"
+  "all_departments":"كل الاقسام",
+  "no_comments":"لا توجد تعليقات"
 }

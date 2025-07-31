@@ -25,7 +25,7 @@ const Otp = ({
 
   return (
     <form onSubmit={onSubmit} className="verify-otp mt-4">
-      <div className="grid grid-cols-4 items-center gap-6 justify-between">
+      <div className="grid grid-cols-4 items-center gap-6 justify-between" dir="ltr">
         {otp.map((val, index) => (
           <input
             key={index}

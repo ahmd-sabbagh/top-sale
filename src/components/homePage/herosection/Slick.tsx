@@ -51,7 +51,7 @@ const Slick = () => {
               <SwiperSlide key={banner.id}>
                 <Link
                   href={""}
-                  className="overflow-hidden rounded-md md:rounded-lg lg:rounded-2xl bg-white flex items-center justify-center relative w-full h-[139px] lg:h-[130px]"
+                  className="overflow-hidden rounded-md md:rounded-lg lg:rounded-2xl bg-white flex items-center justify-center relative w-full h-[139px] lg:h-[200px]"
                 >
                   <SafeNextImage image={banner.photo} />
                 </Link>

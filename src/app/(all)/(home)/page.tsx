@@ -1,24 +1,10 @@
-import {
-  Discounts,
-  FeaturedAds,
-  Herosection,
-  NewArrival,
-  OurPrivacy,
-  CustomerOpinions,
-  DepartmentsAds,
-} from "@/components";
 import React from "react";
+import PageClone from "./pageClone";
 
 const HomePage = () => {
   return (
     <section>
-      <Herosection />
-      <DepartmentsAds />
-      <FeaturedAds />
-      {/* <NewArrival /> */}
-      <Discounts />
-      <OurPrivacy />
-      <CustomerOpinions />
+      <PageClone />
     </section>
   );
 };

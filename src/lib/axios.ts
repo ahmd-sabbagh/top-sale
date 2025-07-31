@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getCookie } from "cookies-next";
+import { toast } from "sonner";
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -17,5 +18,21 @@ instance.interceptors.request.use((config) => {
   }
   return config;
 });
+
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (axios.isAxiosError(error)) {
+      const message =
+        error.response?.data?.message ||
+        "حدث خطأ أثناء تنفيذ الطلب. برجاء المحاولة لاحقًا.";
+      toast.error(message); 
+    } else {
+      toast.error("حدث خطأ غير متوقع.");
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export default instance;

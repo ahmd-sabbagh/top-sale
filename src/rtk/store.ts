@@ -11,6 +11,8 @@ import homeReducer from "./features/homeData";
 import adsLinksReducer from "./features/getCategoriesGroupd";
 import adsDataReducer from "./features/getAdsData";
 import adsDetailReducer from "./features/getAdsDetails";
+import similarAdsReducer from "./features/getSimilarAds";
+import recentCommentsReducer from "./features/getRecentComments";
 
 export const store = configureStore({
   reducer: {
@@ -25,7 +27,9 @@ export const store = configureStore({
     home: homeReducer,
     adsLinks: adsLinksReducer,
     adsData: adsDataReducer,
-    adsDetails:adsDetailReducer
+    adsDetails: adsDetailReducer,
+    similarAds: similarAdsReducer,
+    recentComments: recentCommentsReducer,
   },
 });
 

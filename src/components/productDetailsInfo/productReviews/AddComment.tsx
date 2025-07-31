@@ -1,12 +1,41 @@
 import { useStarRating } from "@/hooks/useStarRating";
 import { useTranslations } from "next-intl";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
+import axios from "@/lib/axios";
+import { useAppSelector } from "@/rtk/hooks";
+import { toast } from "sonner";
+import { SnipperButton } from "@/components";
 
 const AddComment = () => {
   const t = useTranslations();
+  const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { data } = useAppSelector((state) => state.adsDetails);
+
   const { renderStars } = useStarRating();
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!comment) return toast.warning("please write somthing");
+    if (!data?.id) return toast.warning("please reloade page");
+    setLoading(true);
+    try {
+      const response = await axios.post(`/api/comments`, {
+        ad: data?._id,
+        text: comment,
+      });
+      const res = response.data;
+
+      if (!res.success) {
+        toast.error(res.message || "فشل في إرسال التعليق");
+        return;
+      }
+      setComment("");
+      setLoading(false);
+      console.log(response);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div className="border border-color rounded p-4 h-fit">
@@ -20,16 +49,24 @@ const AddComment = () => {
       {/* Form */}
       <form onSubmit={onSubmit} className="mt-6">
         <div className="flex flex-col gap-2">
-          <label htmlFor="comment" className="font-medium title-color text-sm">{t("Add your comment")}</label>
+          <label htmlFor="comment" className="font-medium title-color text-sm">
+            {t("Add your comment")}
+          </label>
           <textarea
+            value={comment}
             id="comment"
             rows={4}
             className="rounded border border-color px-4 py-[14px]"
             placeholder={t("Please add your comment")}
-            
+            onChange={(e) => setComment(e.target.value)}
           ></textarea>
         </div>
-        <button type="submit" className="block w-full h-14 rounded text-white bg-main mt-4 font-medium">{t("Post your comment")}</button>
+        <button
+          type="submit"
+          className="block w-full h-14 rounded text-white bg-main mt-4 font-medium"
+        >
+          {loading ? <SnipperButton /> : t("Post your comment")}
+        </button>
       </form>
     </div>
   );

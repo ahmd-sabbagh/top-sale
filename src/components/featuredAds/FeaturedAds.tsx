@@ -26,7 +26,7 @@ const FeaturedAds = () => {
                     <div className="animate-pulse rounded-md bg-gray-200 h-2 mt-1 w-1/2"></div>
                   </div>
                 ))
-            : data?.ads.map((ad) => <AdsCard ad={ad} key={ad.id} />)}
+            : data?.ads.map((ad) => <AdsCard ad={ad}  key={ad.id} />)}
         </div>
       </div>
     </section>

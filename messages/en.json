@@ -124,6 +124,7 @@
   "validation_phone": "Invalid phone number",
   "Something went wrong": "Something went wrong",
   "phone_sent_success":"Phone Sent Success",
-  "all_departments":"All Departments"
+  "all_departments":"All Departments",
+  "no_comments":"No Comments"
 
 }

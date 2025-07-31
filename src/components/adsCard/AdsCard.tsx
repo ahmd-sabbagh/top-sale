@@ -10,6 +10,7 @@ import { useAuth } from "@/app/context/AuthContext";
 interface Props {
   ad: CarAd;
   status?: boolean;
+  
 }
 
 const AdsCard = ({ ad, status = false }: Props) => {
@@ -36,6 +37,7 @@ const AdsCard = ({ ad, status = false }: Props) => {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 33vw"
+            loading="lazy"
           />
         </Link>
         {/* Body */}
@@ -53,7 +55,7 @@ const AdsCard = ({ ad, status = false }: Props) => {
           {/* {ad.user && <OwnerActions />} */}
         </div>
       </div>
-      {token && <FavoriteButton fav={ad.isFavourite} />}
+      {token && <FavoriteButton fav={ad.isFavourite} id={ad._id} />}
     </div>
   );
 };

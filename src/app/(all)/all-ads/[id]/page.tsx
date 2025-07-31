@@ -14,11 +14,11 @@ const AdsDetailPage = () => {
     },
     {
       name: t("all ads"),
-      href: "/",
+      href: "/all-ads",
     },
     {
       name: t("ads details"),
-      href: "/",
+      href: "",
     },
   ];
   return (

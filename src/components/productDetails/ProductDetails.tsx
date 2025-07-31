@@ -9,7 +9,7 @@ const ProductDetails = () => {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-6 items-center">
           <ImageDetails />
-          <ProductDetailsText data={ProductDetailsData} />
+          <ProductDetailsText dataa={ProductDetailsData} />
         </div>
       </div>
     </section>

@@ -223,3 +223,28 @@ export interface AdsDetails {
   status: string;
   id: string;
 }
+export interface SimilarAds {
+  ads: CarAd[];
+  count: number;
+}
+
+export interface CommentResponse {
+  comments: Comment[];
+  count: number;
+  total: number;
+  loadMore: boolean;
+}
+
+export interface Comment {
+  _id: string;
+  ad: string;
+  text: string;
+  createdAt: Date;
+  isAdOwner: boolean;
+  isCommentOwner: boolean;
+  user: {
+    _id: string;
+    name: string;
+    mobile: string;
+  };
+}

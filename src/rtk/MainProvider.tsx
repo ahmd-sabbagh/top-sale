@@ -1,9 +1,8 @@
 "use client";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { useAppDispatch } from "./hooks";
+import { useAppDispatch, useAppSelector } from "./hooks";
 import { useEffect } from "react";
-import { fetchDataHome } from "./features/homeData";
 import { fetchAdsLinks } from "./features/getCategoriesGroupd";
 
 interface Props {
@@ -13,9 +12,7 @@ interface Props {
 
 const DataFetcher = () => {
   const dispatch = useAppDispatch();
-
   useEffect(() => {
-    dispatch(fetchDataHome());
     dispatch(fetchAdsLinks());
   }, []);
 

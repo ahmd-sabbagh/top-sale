@@ -13,9 +13,11 @@ import { useAppSelector } from "@/rtk/hooks";
 import ImageSkilton from "./ImageSkilton";
 
 const ImageDetails = () => {
-  const { data, loading, error } = useAppSelector((state) => state.adsDetails);
-  console.log(data);
-  const [image, setImage] = useState({ id: "1", image: image_details });
+  const { data, loading } = useAppSelector((state) => state.adsDetails);
+  const [image, setImage] = useState<{ id: string; image: string }>({
+    id: "",
+    image: "",
+  });
   // const arr = [
   //   { id: "1", image: image_details },
   //   { id: "2", image: image_details },
@@ -27,6 +29,11 @@ const ImageDetails = () => {
   //   { id: "8", image: image_details },
   //   { id: "9", image: image_details },
   // ];
+  useEffect(() => {
+    if (data?.photos && data.photos.length > 0) {
+      setImage({ id: data.photos[0]._id, image: data.photos[0].org });
+    }
+  }, [data]);
 
   return (
     <>
@@ -110,13 +117,16 @@ const ImageDetails = () => {
             {/* main image */}
             <div className="main-image img-fit relative min-h-[397px] md:h-[651px] rounded border border-color overflow-hidden flex-1 w-full">
               <FavoriteButton fav={false} />
-              <Image
-                src={image.image}
-                alt="product"
-                fill
-                className="object-cover z-0"
-                sizes="(min-width: 768px) 651px, 397px"
-              />
+              {image.image && (
+                <Image
+                  src={image.image}
+                  alt="product"
+                  fill
+                  className="object-cover z-0"
+                  sizes="(min-width: 768px) 651px, 397px"
+                  priority
+                />
+              )}
               <button
                 type="button"
                 className="absolute bottom-[15px] end-[15px] rounded border border-color w-10 h-10 flex-c"

@@ -1,16 +1,18 @@
-import { chat_mail, whatsapp } from "@/assets";
-import { OwnerAds } from "@/utils/dtos";
+import { chat_mail, profile, whatsapp } from "@/assets";
+import { AdUser } from "@/utils/dtos";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import Follow from "./Follow";
+import { useLocalizedField } from "@/hooks/useLocalizedField";
 
 interface Props {
-  data?: OwnerAds;
+  data?: AdUser;
 }
 
 const Owner = ({ data }: Props) => {
   const t = useTranslations();
+  const joinDate = useLocalizedField(data?.joinDate);
   return (
     <>
       {data && (
@@ -21,7 +23,7 @@ const Owner = ({ data }: Props) => {
               {/* image */}
               <div className="w-[43px] h-[43px] overflow-hidden rounded-full relative">
                 <Image
-                  src={data.image}
+                  src={profile}
                   alt="profile"
                   fill
                   className="object-cover"
@@ -32,7 +34,7 @@ const Owner = ({ data }: Props) => {
               {/* name */}
               <div>
                 <h3 className="font-medium title-color">{data.name}</h3>
-                <p className="text-gray text-sm">{data.time}</p>
+                <p className="text-gray text-sm">{joinDate}</p>
               </div>
             </Link>
             {/* Follow */}
@@ -40,9 +42,9 @@ const Owner = ({ data }: Props) => {
           </div>
           {/* Social */}
           <div className="flex items-center gap-6 mt-5 md:mt-6">
-            {data?.whatsApp && (
+            {data?.mobile && (
               <Link
-                href={`https://wa.me/${data.whatsApp}`}
+                href={`https://wa.me/${data.mobile}`}
                 className="flex items-center gap-2 justify-center rounded grow py-3 md:py-4 bg-main"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -66,7 +68,7 @@ const Owner = ({ data }: Props) => {
 
             {data?.mobile && (
               <Link
-                href={`tel:${data.whatsApp}`}
+                href={`tel:${data.mobile}`}
                 className="flex items-center gap-2 justify-center rounded grow py-3 md:py-4 bg-main"
               >
                 <span>
