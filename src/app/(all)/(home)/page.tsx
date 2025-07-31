@@ -1,5 +1,5 @@
 import React from "react";
-import PageClone from "./pageClone";
+import PageClone from "./PageClone";
 
 const HomePage = () => {
   return (
