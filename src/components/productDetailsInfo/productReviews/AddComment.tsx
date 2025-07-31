@@ -24,7 +24,6 @@ const AddComment = () => {
         text: comment,
       });
       const res = response.data;
-
       if (!res.success) {
         toast.error(res.message || "فشل في إرسال التعليق");
         return;
