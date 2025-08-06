@@ -3,7 +3,6 @@ import { EmptyFilterAds, Filter } from "@/components";
 import AdsCard from "@/components/adsCard/AdsCard";
 import { fetchAdsData } from "@/rtk/features/getAdsData";
 import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
-import { adsData } from "@/utils/data";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 
