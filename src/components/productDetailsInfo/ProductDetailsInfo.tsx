@@ -5,6 +5,7 @@ import { useState } from "react";
 import ProductFeature from "./ProductFeature";
 import ProductReviews from "./productReviews/ProductReviews";
 import { useAppSelector } from "@/rtk/hooks";
+import { useAuth } from "@/app/context/AuthContext";
 
 export const normalizeCategory = (categoryEn?: string): string => {
   if (!categoryEn) return "";
@@ -22,6 +23,7 @@ export const normalizeCategory = (categoryEn?: string): string => {
 
 const ProductDetailsInfo = () => {
   const t = useTranslations();
+  const { token } = useAuth();
   const [type, setType] = useState("Product features");
   const { data, loading } = useAppSelector((state) => state.adsDetails);
   return (
@@ -40,17 +42,19 @@ const ProductDetailsInfo = () => {
           >
             {t("Product features")}
           </button>
-          <button
-            type="button"
-            className={`w-1/2 md:w-[156px] h-[56px] flex-c ${
-              type === "Product Reviews"
-                ? "text-main md:!text-white bg-[#B027701A] md:!bg-[#B02770]"
-                : "desc-color"
-            }`}
-            onClick={() => setType("Product Reviews")}
-          >
-            {t("Product Reviews")}
-          </button>
+          {token && (
+            <button
+              type="button"
+              className={`w-1/2 md:w-[156px] h-[56px] flex-c ${
+                type === "Product Reviews"
+                  ? "text-main md:!text-white bg-[#B027701A] md:!bg-[#B02770]"
+                  : "desc-color"
+              }`}
+              onClick={() => setType("Product Reviews")}
+            >
+              {t("Product Reviews")}
+            </button>
+          )}
         </div>
         {/* Product Feature */}
         {type === "Product features" && data?.category.title.en && (
@@ -59,7 +63,8 @@ const ProductDetailsInfo = () => {
             category={normalizeCategory(data?.category.title.en)}
           />
         )}
-        {type === "Product Reviews" && <ProductReviews />}
+
+        {token && type === "Product Reviews" && <ProductReviews />}
       </div>
     </section>
   );

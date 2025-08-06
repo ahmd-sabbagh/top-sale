@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import FavoriteButton from "../adsCard/FavoriteButton";
 import { useAppSelector } from "@/rtk/hooks";
 import ImageSkilton from "./ImageSkilton";
+import { useAuth } from "@/app/context/AuthContext";
 
 const ImageDetails = () => {
   const { data, loading } = useAppSelector((state) => state.adsDetails);
@@ -18,6 +19,7 @@ const ImageDetails = () => {
     id: "",
     image: "",
   });
+  const { token } = useAuth();
   useEffect(() => {
     if (data?.photos && data.photos.length > 0) {
       setImage({ id: data.photos[0]._id, image: data.photos[0].org });
@@ -104,7 +106,7 @@ const ImageDetails = () => {
             </div> */}
             {/* main image */}
             <div className="main-image img-fit relative min-h-[397px] md:h-[651px] rounded border border-color overflow-hidden flex-1 w-full">
-              {data && (
+              {data && token && (
                 <FavoriteButton fav={data?.isFavourite} id={data?._id} />
               )}
               {image.image && (

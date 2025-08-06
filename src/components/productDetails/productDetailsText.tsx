@@ -14,7 +14,6 @@ interface Props {
 
 const ProductDetailsText = ({ dataa }: Props) => {
   const { data, loading } = useAppSelector((state) => state.adsDetails);
-  // console.log(data);
   return (
     <>
       {loading ? (

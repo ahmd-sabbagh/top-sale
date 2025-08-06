@@ -29,7 +29,6 @@ const Follow = ({ isFollwing, id }: Props) => {
     try {
       const response = await axios.post(endpoint);
       const res = response.data;
-
       if (res.success) {
         toast.success(res.message);
         setFollow(!follow);
