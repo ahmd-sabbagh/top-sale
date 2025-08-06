@@ -1,4 +1,4 @@
-import { chat_mail, profile, whatsapp } from "@/assets";
+import { chat_mail, user, whatsapp } from "@/assets";
 import { AdUser } from "@/utils/dtos";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -21,13 +21,14 @@ const Owner = ({ data }: Props) => {
           <div className="px-4 py-[22px] rounded border border-color flex items-center justify-between">
             <Link href={"/seller-ads"} className="flex items-center gap-3">
               {/* image */}
-              <div className="w-[43px] h-[43px] overflow-hidden rounded-full relative">
+              <div className="w-[30px] h-[30px] overflow-hidden rounded-full relative">
+                {/* w-[43px] */}
                 <Image
-                  src={profile}
+                  src={user}
                   alt="profile"
                   fill
                   className="object-cover"
-                  sizes="43px"
+                  sizes="30px"
                   loading="lazy"
                 />
               </div>
@@ -38,7 +39,7 @@ const Owner = ({ data }: Props) => {
               </div>
             </Link>
             {/* Follow */}
-            <Follow />
+            <Follow isFollwing={data.isFollowing} id={data._id} />
           </div>
           {/* Social */}
           <div className="flex items-center gap-6 mt-5 md:mt-6">

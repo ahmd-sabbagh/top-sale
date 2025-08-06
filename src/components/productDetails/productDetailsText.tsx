@@ -1,6 +1,5 @@
 import { ProductDetailsTextType } from "@/utils/dtos";
 import React from "react";
-import AddFavDesktop from "./actions/AddFavDesktop";
 import ShareAds from "./actions/ShareAds";
 import Rating from "./actions/Rating";
 import Links from "./actions/Links";
@@ -15,7 +14,7 @@ interface Props {
 
 const ProductDetailsText = ({ dataa }: Props) => {
   const { data, loading } = useAppSelector((state) => state.adsDetails);
-  console.log(data);
+  // console.log(data);
   return (
     <>
       {loading ? (
@@ -40,7 +39,6 @@ const ProductDetailsText = ({ dataa }: Props) => {
           {/* Actions */}
           <div className="mt-4 flex items-center gap-4">
             <Rating rateCount={dataa.rateCount} rateRange={dataa.rateRange} />
-            <AddFavDesktop />
             <ShareAds />
           </div>
           {/* description */}

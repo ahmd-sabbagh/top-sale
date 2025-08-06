@@ -248,3 +248,13 @@ export interface Comment {
     mobile: string;
   };
 }
+export interface SearchAds {
+  data: {
+    ads: CarAd[];
+    numberOfAds: number;
+    page: number;
+    perPage: number;
+  };
+  message: string;
+  success: boolean;
+}

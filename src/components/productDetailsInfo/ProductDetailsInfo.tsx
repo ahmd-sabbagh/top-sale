@@ -4,10 +4,26 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import ProductFeature from "./ProductFeature";
 import ProductReviews from "./productReviews/ProductReviews";
+import { useAppSelector } from "@/rtk/hooks";
+
+export const normalizeCategory = (categoryEn?: string): string => {
+  if (!categoryEn) return "";
+  const normalized = categoryEn.trim().toLowerCase();
+  const map: Record<string, string> = {
+    cars: "cars",
+    properties: "properties",
+    lands: "lands",
+    motorcycles: "motorcycles",
+    "heavy equipment": "heavy_equipment",
+  };
+
+  return map[normalized] || "";
+};
 
 const ProductDetailsInfo = () => {
   const t = useTranslations();
   const [type, setType] = useState("Product features");
+  const { data, loading } = useAppSelector((state) => state.adsDetails);
   return (
     <section className="mt-8 md:mt-12">
       <div className="container">
@@ -37,7 +53,12 @@ const ProductDetailsInfo = () => {
           </button>
         </div>
         {/* Product Feature */}
-        {type === "Product features" && <ProductFeature />}
+        {type === "Product features" && data?.category.title.en && (
+          <ProductFeature
+            data={data}
+            category={normalizeCategory(data?.category.title.en)}
+          />
+        )}
         {type === "Product Reviews" && <ProductReviews />}
       </div>
     </section>

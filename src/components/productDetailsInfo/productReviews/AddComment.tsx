@@ -2,12 +2,14 @@ import { useStarRating } from "@/hooks/useStarRating";
 import { useTranslations } from "next-intl";
 import React, { FormEvent, useState } from "react";
 import axios from "@/lib/axios";
-import { useAppSelector } from "@/rtk/hooks";
+import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
 import { toast } from "sonner";
 import { SnipperButton } from "@/components";
+import { addCommentToList } from "@/rtk/features/getRecentComments";
 
 const AddComment = () => {
   const t = useTranslations();
+  const dispatch = useAppDispatch();
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
   const { data } = useAppSelector((state) => state.adsDetails);
@@ -15,7 +17,7 @@ const AddComment = () => {
   const { renderStars } = useStarRating();
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!comment) return toast.warning("please write somthing");
+    if (!comment) return toast.warning(t("please_write_something"));
     if (!data?.id) return toast.warning("please reloade page");
     setLoading(true);
     try {
@@ -28,9 +30,9 @@ const AddComment = () => {
         toast.error(res.message || "فشل في إرسال التعليق");
         return;
       }
+      dispatch(addCommentToList(res?.data?.comment));
       setComment("");
       setLoading(false);
-      console.log(response);
     } catch (error) {
     } finally {
       setLoading(false);

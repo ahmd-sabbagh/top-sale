@@ -119,11 +119,41 @@
   "messages": "الرسائل",
   "write message": "اكتب رسالتك",
   "Link copied to clipboard": "تم نسخ الرابط إلى الحافظة",
-  "view less":"عرض أقل",
-  "To advertise":"للاعلان",
-  "validation_phone":"الرقم غير صحيح",
+  "view less": "عرض أقل",
+  "To advertise": "للاعلان",
+  "validation_phone": "الرقم غير صحيح",
   "Something went wrong": "حدث خطأ ما",
   "phone_sent_success": "تم إرسال الرقم بنجاح",
-  "all_departments":"كل الاقسام",
-  "no_comments":"لا توجد تعليقات"
+  "all_departments": "كل الاقسام",
+  "no_comments": "لا توجد تعليقات",
+  "anonymous_user": "مستخدم مجهول",
+  "update": "تحديث",
+  "you want delete your comment": "هل تريد حذف التعليق ؟",
+  "cancel": "الغاء",
+  "confirmm": "تأكيد",
+
+  "car_make": "الشركة المصنعة",
+  "car_model": "الموديل",
+  "car_sub_model": "الفئة",
+  "car_year": "سنة الصنع",
+  "car_km": "عدد الكيلومترات",
+  "fuel_type": "نوع الوقود",
+  "gear_box": "ناقل الحركة",
+  "engine_capacity": "السعة اللترية",
+  "color": "اللون",
+  "num_rooms": "عدد الغرف",
+  "num_bathrooms": "عدد الحمامات",
+  "area": "المساحة",
+  "advertiser_type": "نوع المُعلن",
+  "city": "المدينة",
+  "address": "العنوان",
+  "equipment_type": "نوع المعدة",
+  "owner":"المالك",
+  "please_write_something": "من فضلك اكتب شيئًا",
+  "please reloade page":"قم بتحميل الصحة من جديد",
+
+  "no_search_results": "لا توجد نتائج بحث"
+
+
+
 }

@@ -18,23 +18,11 @@ const ImageDetails = () => {
     id: "",
     image: "",
   });
-  // const arr = [
-  //   { id: "1", image: image_details },
-  //   { id: "2", image: image_details },
-  //   { id: "3", image: image_details },
-  //   { id: "4", image: image_details },
-  //   { id: "5", image: image_details },
-  //   { id: "6", image: image_details },
-  //   { id: "7", image: image_details },
-  //   { id: "8", image: image_details },
-  //   { id: "9", image: image_details },
-  // ];
   useEffect(() => {
     if (data?.photos && data.photos.length > 0) {
       setImage({ id: data.photos[0]._id, image: data.photos[0].org });
     }
   }, [data]);
-
   return (
     <>
       <div
@@ -116,7 +104,9 @@ const ImageDetails = () => {
             </div> */}
             {/* main image */}
             <div className="main-image img-fit relative min-h-[397px] md:h-[651px] rounded border border-color overflow-hidden flex-1 w-full">
-              <FavoriteButton fav={false} />
+              {data && (
+                <FavoriteButton fav={data?.isFavourite} id={data?._id} />
+              )}
               {image.image && (
                 <Image
                   src={image.image}

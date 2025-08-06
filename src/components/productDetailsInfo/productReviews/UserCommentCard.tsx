@@ -1,7 +1,9 @@
-import { profile } from "@/assets";
+import { profile, user } from "@/assets";
 import { useStarRating } from "@/hooks/useStarRating";
 import { Comment } from "@/utils/dtos";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import CommentOptions from "./commentOptions/CommentOptions";
 
 interface Props {
   data: Comment;
@@ -9,30 +11,38 @@ interface Props {
 
 const UserCommentCard = ({ data }: Props) => {
   const { renderStars } = useStarRating();
+  const t = useTranslations();
   return (
-    <div className=" not-first:pt-4 not-first:mt-4 not-first:border-t border-color">
+    <div className=" not-first:pt-4 not-first:mt-4 not-first:border-t border-color overflow-hidden">
       <div className="flex justify-between">
         <div className="flex items-center gap-4">
-          <div className="w-[50px] h-[50px] rounded-full overflow-hidden relative">
+          <div className="w-[30px] h-[30px] rounded-full overflow-hidden relative">
             <Image
-              src={profile}
+              src={user}
               alt="profile"
               fill
               loading="lazy"
               className="object-cover"
-              sizes="50px"
+              sizes="30px"
             />
           </div>
           <div>
-            <h3 className="title-color">{data.user.name}</h3>
+            <h3 className="title-color">
+              {data.user.name ? data.user.name : t("anonymous_user")}
+            </h3>
             <div className="flex items-center gap-[2px] mt-1">
               {renderStars(5)}
             </div>
           </div>
         </div>
-        <span className="desc-color text-sm">{new Date(data.createdAt).toLocaleDateString()}</span>
+        <span className="desc-color text-sm">
+          {new Date(data.createdAt).toLocaleDateString()}
+        </span>
       </div>
-      <p className="mt-4 desc-color text-sm line-clamp-2">{data.text}</p>
+      <div className="mt-4 flex items-start gap-4">
+        <p className="desc-color text-sm grow">{data.text}</p>
+        {data.isCommentOwner && <CommentOptions comment={data} />}
+      </div>
     </div>
   );
 };

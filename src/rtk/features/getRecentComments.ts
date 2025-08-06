@@ -1,5 +1,5 @@
 import axios from "@/lib/axios";
-import { CommentResponse } from "@/utils/dtos";
+import { CommentResponse, Comment } from "@/utils/dtos";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 interface DataState {
@@ -25,7 +25,27 @@ export const featchRecentComments = createAsyncThunk(
 const dataSlice = createSlice({
   name: "getRecentComments",
   initialState,
-  reducers: {},
+  reducers: {
+    addCommentToList: (state, action: PayloadAction<Comment>) => {
+      if (state.data) {
+        state.data.comments.unshift(action.payload);
+      }
+    },
+    updateComment(state, action: PayloadAction<Comment>) {
+      const updated = action.payload;
+      const idx = state.data?.comments.findIndex((c) => c._id === updated._id);
+      if (idx !== undefined && idx !== -1 && state.data) {
+        state.data.comments[idx] = updated;
+      }
+    },
+    deleteComment(state, action: PayloadAction<string>) {
+      if (state.data) {
+        state.data.comments = state.data.comments.filter(
+          (comment) => comment._id !== action.payload
+        );
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(featchRecentComments.pending, (state) => {
@@ -47,3 +67,5 @@ const dataSlice = createSlice({
 });
 
 export default dataSlice.reducer;
+export const { addCommentToList, updateComment, deleteComment } =
+  dataSlice.actions;

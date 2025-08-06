@@ -1,5 +1,4 @@
 import SortBy from "@/components/sortBy/SortBy";
-import { usersCommentsData } from "@/utils/data";
 import { useTranslations } from "next-intl";
 import React from "react";
 import UserCommentCard from "./UserCommentCard";
@@ -8,7 +7,6 @@ import { useAppSelector } from "@/rtk/hooks";
 const UserComments = () => {
   const t = useTranslations();
   const { data, loading } = useAppSelector((state) => state.recentComments);
-  console.log(data);
   return (
     <div className="md:col-span-2">
       <div className="flex items-center justify-between p-4 rounded border border-color">
