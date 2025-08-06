@@ -1,14 +1,15 @@
 "use client";
+import { useLocalizedField } from "@/hooks/useLocalizedField";
 import { useClickOutside } from "@/hooks/useOutsideClick";
 import { Category } from "@/utils/dtos";
-import Link from "next/link";
 import React, { useState } from "react";
-import {
-  MdKeyboardArrowDown,
-  MdOutlineKeyboardArrowLeft,
-} from "react-icons/md";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import SectionLink from "./SectionLink";
 interface Props {
-  name: string;
+  name: {
+    ar: string;
+    en: string;
+  };
   data: Category[];
 }
 
@@ -17,11 +18,10 @@ const AllDepartmentsSection = ({ name, data }: Props) => {
   const ref = useClickOutside<HTMLDivElement>(() => {
     setOpenMenu(false);
   });
+  const title = useLocalizedField(name);
   return (
-    <button
-      className="nav-section relative flex items-center gap-[6px] text-white cursor-pointer py-[11px] min-w-fit"
-    >
-      <p>{name}</p>
+    <button className="nav-section relative flex items-center gap-[6px] text-white cursor-pointer py-[11px] min-w-fit">
+      <p>{title}</p>
       <div className={`arrow transition ${openMenu ? "rotate-180" : ""}`}>
         <MdKeyboardArrowDown />
       </div>
@@ -34,16 +34,7 @@ const AllDepartmentsSection = ({ name, data }: Props) => {
           ref={ref}
         >
           {data.map((item) => (
-            <Link
-              href={`/all-ads?category=${item._id}`}
-              key={item._id}
-              className="w-full flex item-center justify-between p-4 border-b border-color ltr:hover:translate-x-1 rtl:hover:-translate-x-1 transition"
-            >
-              <span className="title-color">{item.title.ar}</span>
-              <span className="text-main text-xl ltr:rotate-180">
-                <MdOutlineKeyboardArrowLeft />
-              </span>
-            </Link>
+            <SectionLink {...item} key={item._id} />
           ))}
         </div>
       </div>

@@ -11,6 +11,8 @@ import {
   MdKeyboardArrowDown,
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
+import DepartmentItem from "./DepartmentItem";
+import SectionLink from "./SectionLink";
 
 const AllDepartments = () => {
   const { data, loading, error } = useAppSelector((state) => state.adsLinks);
@@ -34,9 +36,7 @@ const AllDepartments = () => {
   });
 
   return (
-    <div
-      className="nav-section relative flex items-center gap-[6px] text-white cursor-pointer py-[11px] min-w-fit"
-    >
+    <div className="nav-section relative flex items-center gap-[6px] text-white cursor-pointer py-[11px] min-w-fit">
       <p>{t("all_departments")}</p>
       <div className={`arrow transition ${openMenu ? "rotate-180" : ""}`}>
         <MdKeyboardArrowDown />
@@ -58,18 +58,16 @@ const AllDepartments = () => {
                 <SnipperButton className="!text-black" />
               </div>
             ) : (
-              data.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="department w-full flex item-center justify-between p-4 border-b border-color ltr:hover:translate-x-1 rtl:hover:-translate-x-1 transition"
-                  onMouseEnter={() => onMouseEnterHandlr(item)}
-                >
-                  <span className="title-color">{item.title.ar}</span>
-                  <span className="text-main text-xl ltr:rotate-180">
-                    <MdOutlineKeyboardArrowLeft />
-                  </span>
-                </div>
-              ))
+              data.map((item) => {
+                return (
+                  <DepartmentItem
+                    item={item}
+                    onMouseEnter={onMouseEnterHandlr}
+                    title={item.title}
+                    key={item._id}
+                  />
+                );
+              })
             )}
           </div>
         </div>
@@ -83,16 +81,7 @@ const AllDepartments = () => {
             onMouseLeave={onMouseLeave}
           >
             {submenu.map((item) => (
-              <Link
-                href={`/all-ads?category=${item._id}`}
-                key={item._id}
-                className="w-full flex item-center justify-between p-4 border-b border-color ltr:hover:translate-x-1 rtl:hover:-translate-x-1 transition"
-              >
-                <span className="title-color">{item.title.ar}</span>
-                <span className="text-main text-xl ltr:rotate-180">
-                  <MdOutlineKeyboardArrowLeft />
-                </span>
-              </Link>
+              <SectionLink {...item} key={item._id} />
             ))}
           </div>
         )}

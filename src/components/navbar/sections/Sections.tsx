@@ -22,7 +22,7 @@ const Sections = () => {
                 .map((section) => (
                   <AllDepartmentsSection
                     data={section.categories}
-                    name={section.title.ar}
+                    name={section.title}
                     key={section._id}
                   />
                 ))}
