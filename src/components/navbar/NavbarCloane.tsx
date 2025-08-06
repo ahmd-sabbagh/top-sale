@@ -1,9 +1,9 @@
 import { logo } from "@/assets";
 import Image from "next/image";
 import React from "react";
+import Search from "./Search";
 import IconsAction from "./IconsAction";
 import Link from "next/link";
-import SearchCont from "./SearchCont";
 
 const NavbarCloane = () => {
   return (
@@ -26,14 +26,14 @@ const NavbarCloane = () => {
             </Link>
 
             <div className="hidden md:block md:grow">
-              <SearchCont />
+              <Search />
             </div>
             <div>
               <IconsAction />
             </div>
           </div>
           <div className="md:hidden mt-4">
-            <SearchCont />
+            <Search />
           </div>
         </div>
       </div>

@@ -13,18 +13,13 @@ import axios from "@/lib/axios";
 import SnipperButton from "../sniperBtn/SniperBtn";
 import { AdsData, CarAd, SearchAds } from "@/utils/dtos";
 
-interface Props {
-  ads: CarAd[];
-  loading?: boolean;
-}
 
-const Search = ({ ads, loading }: Props) => {
+const Search = () => {
   const t = useTranslations();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [keyword, setKeyWord] = useState<string>();
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
-  const [data, setData] = useState<CarAd[]>(ads || []);
-
+  const [data, setData] = useState<CarAd[]>([]);
   const clickOutHandler = () => {
     setIsModalOpen(false);
   };
@@ -82,7 +77,7 @@ const Search = ({ ads, loading }: Props) => {
                 className="grid gap-4 md:gap-5 lg:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6 md:mt-16 h-[400px] rounded-xl p-3 md:p-5 overflow-scroll h-scroll"
                 style={{ boxShadow: "0 0 20px 0px #00000038" }}
               >
-                {searchLoading || loading
+                {searchLoading
                   ? Array(8)
                       .fill("")
                       .map((_, idx) => (
